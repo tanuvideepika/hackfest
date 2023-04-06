@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodPilot</title>
+</head>
+<body>
+    <h1>MoodPilot</h1>
+    <h2>sample form</h2>
+    <!-- <form class="add" action="/" method="post">
+        <label for="movie">Movie name: </label>
+        <input type="text" name="movie" required>
+        <label for="type">Type: </label>
+        <input type="text" name="type" required>
+        <button>add a new movie</button>
+    </form>
+    <form class="delete">
+        <label for="id">Document Id:</label>
+        <input type="text" name="id" required>
+        <button>delete a movie</button>
+    </form> -->
+    <form action="/predict" method="post">
+        <label for="user-input">Enter Text</label>
+        <input type="text" name="user-input" id="user-input">
+        <button type="submit">Predict</button>
+    </form>
+    <script src="bundle.js"></script>
+</body>
+</html>

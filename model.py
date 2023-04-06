@@ -1,7 +1,7 @@
 
 import numpy as np # linear algebra
 import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
-
+import text_hammer as th
 
 
 
@@ -9,13 +9,13 @@ import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
 
 import warnings
 warnings.filterwarnings('ignore')
-%config Completer.use_jedi = False # if autocompletion doesnot work in kaggle notebook | hit tab
+# %config Completer.use_jedi = False 
 
 
 # importing the dataset 
-df_train = pd.read_csv('../input/train.txt', header =None, sep =';', names = ['Input','Sentiment'], encoding='utf-8')
-df_test = pd.read_csv('../input/test.txt', header = None, sep =';', names = ['Input','Sentiment'],encoding='utf-8')
-df_val=pd.read_csv('../input/val.txt',header=None,sep=';',names=['Input','Sentiment'],encoding='utf-8')
+df_train = pd.read_csv('train.txt', header =None, sep =';', names = ['Input','Sentiment'], encoding='utf-8')
+df_test = pd.read_csv('test.txt', header = None, sep =';', names = ['Input','Sentiment'],encoding='utf-8')
+df_val=pd.read_csv('val.txt',header=None,sep=';',names=['Input','Sentiment'],encoding='utf-8')
 
 # %% [code] {"editable":false,"execution":{"iopub.status.busy":"2023-03-28T18:48:19.110979Z","iopub.execute_input":"2023-03-28T18:48:19.111565Z","iopub.status.idle":"2023-03-28T18:48:19.125720Z","shell.execute_reply.started":"2023-03-28T18:48:19.111527Z","shell.execute_reply":"2023-03-28T18:48:19.124761Z"}}
 df_full = pd.concat([df_train,df_test,df_val], axis = 0)
@@ -27,16 +27,16 @@ df_full
 # 
 
 # %% [code] {"editable":false,"execution":{"iopub.status.busy":"2023-03-28T18:48:19.127042Z","iopub.execute_input":"2023-03-28T18:48:19.127381Z","iopub.status.idle":"2023-03-28T18:48:25.077430Z","shell.execute_reply.started":"2023-03-28T18:48:19.127346Z","shell.execute_reply":"2023-03-28T18:48:25.076366Z"}}
-!pip install text_hammer
+# !pip install text_hammer
 
 # %% [code] {"editable":false,"execution":{"iopub.status.busy":"2023-03-28T18:48:25.079939Z","iopub.execute_input":"2023-03-28T18:48:25.080330Z","iopub.status.idle":"2023-03-28T18:48:25.086854Z","shell.execute_reply.started":"2023-03-28T18:48:25.080287Z","shell.execute_reply":"2023-03-28T18:48:25.086044Z"}}
-import text_hammer as th
+
 
 # %% [code] {"editable":false,"execution":{"iopub.status.busy":"2023-03-28T18:48:25.088244Z","iopub.execute_input":"2023-03-28T18:48:25.088679Z","iopub.status.idle":"2023-03-28T18:48:25.103553Z","shell.execute_reply.started":"2023-03-28T18:48:25.088640Z","shell.execute_reply":"2023-03-28T18:48:25.102748Z"}}
-%%time
+# %%time
 
-from tqdm._tqdm_notebook import tqdm_notebook
-tqdm_notebook.pandas()
+#from tqdm._tqdm_notebook import tqdm_notebook
+#tqdm_notebook.pandas()
 
 def text_preprocessing(df,col_name):
     column = col_name
@@ -170,7 +170,7 @@ x_test['input_ids']
 # ### loading some libraries 
 
 # %% [code] {"editable":false,"execution":{"iopub.status.busy":"2023-03-28T18:49:56.745808Z","iopub.execute_input":"2023-03-28T18:49:56.746319Z","iopub.status.idle":"2023-03-28T18:49:57.163109Z","shell.execute_reply.started":"2023-03-28T18:49:56.746278Z","shell.execute_reply":"2023-03-28T18:49:57.162120Z"}}
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers.legacy import Adam
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.initializers import TruncatedNormal
 from tensorflow.keras.losses import CategoricalCrossentropy
